@@ -1,5 +1,5 @@
 # UOD
-![Unobserved Object Detection Example](assets/images/UOD_image.png)
+![Unobserved Object Detection Example](assets/images/UOD.png)
 
 
 Code for Unobserved Object Detection using Generative Models
