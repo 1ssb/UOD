@@ -4,4 +4,4 @@
 
 ---
 
-### Code and Pipelines to be released soon
+### Code and Pipelines to be incrementally
