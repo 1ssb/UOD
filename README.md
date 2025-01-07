@@ -4,4 +4,4 @@
 
 ---
 
-### Code and Pipelines to be released soon. [Paper](https://arxiv.org/abs/2410.05869)
+### Code and Pipelines to be released soon. Find the [Paper](https://arxiv.org/abs/2410.05869) here.
