@@ -1,116 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Believing is Seeing: Unobserved Object Detection using Generative Models. A novel approach using generative models to detect unobserved objects.">
-    <title>Believing is Seeing: Unobserved Object Detection</title>
-    
-    <!-- KaTeX for Proper Math Rendering -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.3/katex.min.css">
-    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.3/katex.min.js"></script>
-    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.3/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Believing is Seeing: Unobserved Object Detection using Generative Models. A novel approach using generative models to detect unobserved objects.">
+  <title>Believing is Seeing: Unobserved Object Detection</title>
+  
+  <!-- KaTeX for Proper Math Rendering -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.3/katex.min.css">
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.3/katex.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.3/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
 
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            max-width: 800px;
-            margin: 0 auto;
-            line-height: 1.6;
-        }
-        h1, h2 { color: #333; }
-        .container { padding: 20px; }
-        .authors a { text-decoration: none; color: #007bff; }
-        .resources a { display: inline-block; margin-right: 10px; }
-        .code-block {
-            background: #f4f4f4;
-            padding: 10px;
-            border-left: 3px solid #333;
-            font-family: monospace;
-            overflow-x: auto;
-            white-space: pre-wrap;
-        }
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-            margin: 0 auto;
-            border-radius: 8px;
-        }
-        figure {
-            text-align: center;
-            margin: 20px 0;
-        }
-        figcaption {
-            font-size: 0.9em;
-            color: #555;
-            margin-top: 5px;
-        }
-    </style>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #f9f9f9;
+      color: #333;
+      line-height: 1.6;
+    }
+    h1, h2 {
+      color: #333;
+      margin-top: 20px;
+    }
+    .container {
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .authors a {
+      text-decoration: none;
+      color: #007bff;
+    }
+    .resources a {
+      display: inline-block;
+      margin-right: 10px;
+    }
+    .code-block {
+      background: #f4f4f4;
+      padding: 10px;
+      border-left: 3px solid #333;
+      font-family: monospace;
+      overflow-x: auto;
+      white-space: pre-wrap;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+      border-radius: 8px;
+    }
+    figure {
+      text-align: center;
+      margin: 20px 0;
+    }
+    figcaption {
+      font-size: 0.9em;
+      color: #555;
+      margin-top: 5px;
+    }
+    .zoomable {
+      cursor: zoom-in;
+      transition: transform 0.3s ease;
+    }
+  </style>
 </head>
 <body>
 
 <div class="container">
-    <h1>Believing is Seeing: Unobserved Object Detection using Generative Models</h1>
+  <h1>Believing is Seeing: Unobserved Object Detection using Generative Models</h1>
 
-    <div class="authors">
-        <h2>
-            <a href="https://1ssb.github.io" target="_blank">Subhransu S. Bhattacharjee</a>, 
-            <a href="https://sites.google.com/view/djcampbell" target="_blank">Dylan Campbell</a>, 
-            <a href="https://rahulsho.me" target="_blank">Rahul Shome</a>
-        </h2>
-    </div>
+  <div class="authors">
+    <h2>
+      <a href="https://1ssb.github.io" target="_blank">Subhransu S. Bhattacharjee</a>, 
+      <a href="https://sites.google.com/view/djcampbell" target="_blank">Dylan Campbell</a>, 
+      <a href="https://rahulsho.me" target="_blank">Rahul Shome</a>
+    </h2>
+  </div>
 
-    <figure>
-        <img src="assets/images/UOD.png" alt="Unobserved Object Detection Example" width="800" height="400" decoding="async" fetchpriority="high">
-        <figcaption>Illustration of Unobserved Object Detection (UOD) using generative models.</figcaption>
-    </figure>
+  <figure>
+    <img src="assets/images/UOD.png" alt="Unobserved Object Detection Example" width="800" height="400" decoding="async" fetchpriority="high">
+    <figcaption>Illustration of Unobserved Object Detection (UOD) using generative models.</figcaption>
+  </figure>
 
-    <hr>
+  <hr>
 
-    <h2>Abstract</h2>
-    <p>Can objects that are not visible in an image—but are in the vicinity of the camera—be detected?
-        This study introduces the novel tasks of 2D, 2.5D, and 3D unobserved object detection for predicting the location of nearby objects that are occluded or lie outside the image frame.
-        We adapt several state-of-the-art pre-trained generative models, including diffusion and vision-language models, and show they can infer the presence of unseen objects.
-        Our benchmark metrics and empirical evaluations on indoor scenes (RealEstate10k and NYU Depth V2 datasets) support this approach.</p>
+  <h2>Abstract</h2>
+  <p>
+    Can objects that are not visible in an image—but are in the vicinity of the camera—be detected?
+    This study introduces the novel tasks of 2D, 2.5D, and 3D unobserved object detection for predicting the location of nearby objects that are occluded or lie outside the image frame.
+    We adapt several state-of-the-art pre-trained generative models, including diffusion and vision-language models, and show they can infer the presence of unseen objects.
+    Our benchmark metrics and empirical evaluations on indoor scenes (RealEstate10k and NYU Depth V2 datasets) support this approach.
+  </p>
+  
+  <h2>Definition of the Task</h2>
+  <p>
+    <strong>Unobserved Object Detection (UOD)</strong> is the task of inferring the presence and spatial location of objects that are not directly visible within an image frame but are present in the surrounding environment. 
+    This includes objects that are occluded or lie just outside the camera's field-of-view. The task is explored in three dimensions:
+  </p>
+  <ul>
+    <li><strong>2D UOD:</strong> Predicting the object location on the image plane.</li>
+    <li><strong>2.5D UOD:</strong> Incorporating partial depth information to infer object presence.</li>
+    <li><strong>3D UOD:</strong> Reconstructing the full spatial geometry of the scene to localize objects in three dimensions.</li>
+  </ul>
 
-    <h2>Resources</h2>
-    <p class="resources">
-        <a href="https://arxiv.org/abs/2410.05869" target="_blank">
-            <img src="https://img.shields.io/badge/Read%20Paper-arXiv-red?style=for-the-badge&logo=arxiv" alt="Read Paper">
-        </a>
-        <a href="#" id="code-badge">
-            <img src="https://img.shields.io/badge/Code-Coming%20Soon-blue?style=for-the-badge&logo=github" alt="Code Coming Soon">
-        </a>
-    </p>
+  <h2>Resources</h2>
+  <p class="resources">
+    <a href="https://arxiv.org/abs/2410.05869" target="_blank">
+      <img src="https://img.shields.io/badge/Read%20Paper-arXiv-red?style=for-the-badge&logo=arxiv" alt="Read Paper">
+    </a>
+    <a href="#" id="code-badge">
+      <img src="https://img.shields.io/badge/Code-Coming%20Soon-blue?style=for-the-badge&logo=github" alt="Code Coming Soon">
+    </a>
+  </p>
 
-    <h2>Results</h2>
-    <figure>
-        <img src="assets/images/results.png" alt="Detection Results" width="800" height="400" decoding="async" fetchpriority="high">
-        <figcaption>
-            Each row shows the predicted 2D and top-down 3D spatial distributions generated by each method for various object categories: TV (first row), refrigerator (second row), sink (third row), laptop (fourth row), and sink (fifth row).
-            Notably, in the bottom row, the DFM-based model infers the likely presence of a sink, occluded by the refrigerator, albeit not with a high likelihood.
-            A white triangle marks the camera position, while dashed and dot-dashed lines depict the camera frustums for <span class="math">\(\mathcal{I}\)</span> and <span class="math">\(\mathbb{I}\)</span>.
-            The white star indicates the ground-truth position of the object, when visible in 2D.
-            Heatmap colors indicate object likelihood, with warmer tones representing higher probabilities.
-            Since these are spatially-normalized distributions, we use a log-scale for visualization.
-        </figcaption>
-    </figure>
+  <h2>Results</h2>
+  <figure>
+    <img id="results-image" class="zoomable" src="assets/images/results.png" alt="Detection Results" width="800" height="400" decoding="async" fetchpriority="high">
+    <figcaption>
+      Each row shows the predicted 2D and top-down 3D spatial distributions generated by each method for various object categories: TV (first row), refrigerator (second row), sink (third row), laptop (fourth row), and sink (fifth row).
+      Notably, in the bottom row, the DFM-based model infers the likely presence of a sink, occluded by the refrigerator, albeit not with a high likelihood.
+      A white triangle marks the camera position, while dashed and dot-dashed lines depict the camera frustums for <span class="math">\(\mathcal{I}\)</span> and <span class="math">\(\mathbb{I}\)</span>.
+      The white star indicates the ground-truth position of the object, when visible in 2D.
+      Heatmap colors indicate object likelihood, with warmer tones representing higher probabilities.
+      Since these are spatially-normalized distributions, we use a log-scale for visualization.
+    </figcaption>
+  </figure>
 
-    <h2>Usage</h2>
-    <p>Once released, detailed instructions for running the experiments and reproducing results will be provided.</p>
+  <h2>Usage</h2>
+  <p>Once released, detailed instructions for running the experiments and reproducing results will be provided.</p>
 
-    <h2>Cite As</h2>
-    <div class="code-block">
-<pre>@misc{bhattacharjee2024believing,
+  <h2>Cite As</h2>
+  <div class="code-block">
+    <pre>@misc{bhattacharjee2024believing,
     title={{Believing is Seeing}: Unobserved Object Detection using Generative Models},
     author={Subhransu S. Bhattacharjee and Dylan Campbell and Rahul Shome},
     year={2024},
     eprint={2410.05869},
     archivePrefix={arXiv}
 }</pre>
-    </div>
+  </div>
 </div>
+
+<!-- Medium Zoom Library for Image Zoom Functionality -->
+<script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js"></script>
+<script>
+  // Apply zoom effect on the results image
+  mediumZoom('#results-image', {
+    margin: 24,
+    background: '#000'
+  });
+</script>
 
 </body>
 </html>
