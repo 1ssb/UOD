@@ -97,16 +97,11 @@
     Our benchmark metrics and empirical evaluations on indoor scenes (RealEstate10k and NYU Depth V2 datasets) support this approach.
   </p>
   
-  <h2>Definition of the Task</h2>
+  <h2>Task Definition</h2>
   <p>
     <strong>Unobserved Object Detection (UOD)</strong> is the task of inferring the presence and spatial location of objects that are not directly visible within an image frame but are present in the surrounding environment. 
-    This includes objects that are occluded or lie just outside the camera's field-of-view. The task is explored in three dimensions:
+    This includes objects that are occluded or lie just outside the camera's field-of-view. The task is explored in three settings --- 2D images with partial views, 3D scenes with occlusions, 2.5D scenes (2D images + Depth).
   </p>
-  <ul>
-    <li><strong>2D UOD:</strong> Predicting the object location on the image plane.</li>
-    <li><strong>2.5D UOD:</strong> Incorporating partial depth information to infer object presence.</li>
-    <li><strong>3D UOD:</strong> Reconstructing the full spatial geometry of the scene to localize objects in three dimensions.</li>
-  </ul>
 
   <h2>Resources</h2>
   <p class="resources">
