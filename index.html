@@ -12,6 +12,7 @@
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.3/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
 
   <style>
+    /* Base styles */
     body {
       font-family: Arial, sans-serif;
       max-width: 800px;
@@ -20,6 +21,7 @@
       background-color: #f9f9f9;
       color: #333;
       line-height: 1.6;
+      transition: background-color 0.3s, color 0.3s;
     }
     h1, h2 {
       color: #333;
@@ -30,6 +32,7 @@
       padding: 20px;
       border-radius: 8px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      transition: background 0.3s, box-shadow 0.3s;
     }
     .authors a {
       text-decoration: none;
@@ -67,9 +70,46 @@
       cursor: zoom-in;
       transition: transform 0.3s ease;
     }
+    
+    /* Theme toggle button */
+    #theme-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      padding: 8px 12px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      z-index: 1000;
+    }
+    
+    /* Dark mode styles */
+    .dark-mode {
+      background-color: #222;
+      color: #f9f9f9;
+    }
+    .dark-mode .container {
+      background: #333;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+    .dark-mode a {
+      color: #66b3ff;
+    }
+    .dark-mode .code-block {
+      background: #444;
+      border-left: 3px solid #66b3ff;
+    }
+    .dark-mode figcaption {
+      color: #ccc;
+    }
   </style>
 </head>
 <body>
+
+<!-- Theme Toggle Button -->
+<button id="theme-toggle">Switch to Night Mode</button>
 
 <div class="container">
   <h1>Believing is Seeing: Unobserved Object Detection using Generative Models</h1>
@@ -100,7 +140,7 @@
   <h2>Task Definition</h2>
   <p>
     <strong>Unobserved Object Detection (UOD)</strong> is the task of inferring the presence and spatial location of objects that are not directly visible within an image frame but are present in the surrounding environment. 
-    This includes objects that are occluded or lie just outside the camera's field-of-view. The task is explored in three settings --- 2D images with partial views, 3D scenes with occlusions, 2.5D scenes (2D images + Depth).
+    This includes objects that are occluded or lie just outside the camera's field-of-view. The task is explored in three settings — 2D images with partial views, 3D scenes with occlusions, and 2.5D scenes (2D images augmented with depth information).
   </p>
 
   <h2>Resources</h2>
@@ -131,7 +171,7 @@
 
   <h2>Cite As</h2>
   <div class="code-block">
-    <pre>@misc{bhattacharjee2024believing,
+    <pre>@misc{bhattacharjee2024uod,
     title={{Believing is Seeing}: Unobserved Object Detection using Generative Models},
     author={Subhransu S. Bhattacharjee and Dylan Campbell and Rahul Shome},
     year={2024},
@@ -148,6 +188,17 @@
   mediumZoom('#results-image', {
     margin: 24,
     background: '#000'
+  });
+
+  // Theme toggle functionality
+  const themeToggle = document.getElementById('theme-toggle');
+  themeToggle.addEventListener('click', function() {
+    document.body.classList.toggle('dark-mode');
+    if (document.body.classList.contains('dark-mode')) {
+      themeToggle.textContent = 'Switch to Day Mode';
+    } else {
+      themeToggle.textContent = 'Switch to Night Mode';
+    }
   });
 </script>
 
