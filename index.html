@@ -26,6 +26,7 @@
     h1, h2 {
       color: #333;
       margin-top: 20px;
+      transition: color 0.3s;
     }
     .container {
       background: #fff;
@@ -83,11 +84,16 @@
       border-radius: 4px;
       cursor: pointer;
       z-index: 1000;
+      font-size: 18px;
+      line-height: 1;
     }
     
     /* Dark mode styles */
     .dark-mode {
       background-color: #222;
+      color: #f9f9f9;
+    }
+    .dark-mode h1, .dark-mode h2 {
       color: #f9f9f9;
     }
     .dark-mode .container {
@@ -109,7 +115,7 @@
 <body>
 
 <!-- Theme Toggle Button -->
-<button id="theme-toggle">Switch to Night Mode</button>
+<button id="theme-toggle" aria-label="Toggle dark/light mode">🌙</button>
 
 <div class="container">
   <h1>Believing is Seeing: Unobserved Object Detection using Generative Models</h1>
@@ -190,14 +196,15 @@
     background: '#000'
   });
 
-  // Theme toggle functionality
+  // Theme toggle functionality with sun/moon icons
   const themeToggle = document.getElementById('theme-toggle');
   themeToggle.addEventListener('click', function() {
     document.body.classList.toggle('dark-mode');
+    // Update icon: if dark mode is active, show sun icon; else, show moon icon
     if (document.body.classList.contains('dark-mode')) {
-      themeToggle.textContent = 'Switch to Day Mode';
+      themeToggle.textContent = '☀️';
     } else {
-      themeToggle.textContent = 'Switch to Night Mode';
+      themeToggle.textContent = '🌙';
     }
   });
 </script>
