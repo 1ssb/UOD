@@ -249,7 +249,7 @@ class DataDownloader:
 
 if __name__ == "__main__":
     if len(sys.argv) != 3:
-        print("Usage: script.py [test | train] [max_scenes | ".")]")
+        print(f"Usage: script.py [test | train] [max_scenes or .]")
         sys.exit(1)
 
     mode = sys.argv[1]
