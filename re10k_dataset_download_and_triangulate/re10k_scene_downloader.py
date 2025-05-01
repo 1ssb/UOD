@@ -249,7 +249,7 @@ class DataDownloader:
 
 if __name__ == "__main__":
     if len(sys.argv) != 3:
-        print("Usage: script.py [test | train] [max_scenes | "*"]")
+        print("Usage: script.py [test | train] [max_scenes | ".")]")
         sys.exit(1)
 
     mode = sys.argv[1]
@@ -260,7 +260,7 @@ if __name__ == "__main__":
         sys.exit(1)
 
     dataroot = f"./RealEstate10K/{mode}"
-    max_scenes = len(glob.glob(os.path.join(dataroot, '*.txt'))) if max_scenes == '*' else int(max_scenes)
+    max_scenes = len(glob.glob(os.path.join(dataroot, '*.txt'))) if max_scenes == '.' else int(max_scenes)
     
     downloader = DataDownloader(dataroot, mode, max_scenes)
     downloader.run()
