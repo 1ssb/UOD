@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Believing is Seeing: Unobserved Object Detection using Generative Models. A novel approach using generative models to detect unobserved objects." />
+  <meta name="description" content="Believing is Seeing: Unobserved Object Detection using Generative Models." />
   <title>Believing is Seeing: Unobserved Object Detection</title>
 
   <!-- Performance Optimizations -->
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.3/katex.min.css" integrity="sha384-KD9mgE2JgbA13s8PgHMIH+tY0xM7Uj/0UQonZGhTcrZJwXzqDb3QsU+MpQ0Pqx8i" crossorigin="anonymous" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-kuUmI6jZxK3S+ChpmG/Nu5Oa0KYVRyn6ZSlwQHYsbx7+v5z3pyR8eHZJRxmIwAOCYfRtJ6A5vJ0qXz3AkmyDxQ==" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.3/katex.min.css" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" />
 
   <!-- Scripts -->
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.3/katex.min.js"></script>
@@ -123,7 +123,8 @@
       border-left: 4px solid #66b3ff;
     }
 
-    .dark-mode .copy-button, .dark-mode #theme-toggle {
+    .dark-mode .copy-button,
+    .dark-mode #theme-toggle {
       background-color: #444;
       color: #fff;
     }
@@ -132,8 +133,8 @@
       position: fixed;
       top: 20px;
       right: 20px;
-      width: 40px;
-      height: 40px;
+      width: 44px;
+      height: 44px;
       border: none;
       border-radius: 50%;
       background-color: #ddd;
@@ -148,7 +149,23 @@
 
     .video-wrapper {
       margin-bottom: 30px;
-      text-align: center;
+    }
+
+    .video-embed {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+      height: 0;
+      overflow: hidden;
+      border-radius: 10px;
+    }
+
+    .video-embed iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
     }
 
     .task-image {
@@ -166,6 +183,13 @@
         max-width: 100%;
       }
     }
+
+    footer {
+      margin-top: 40px;
+      text-align: center;
+      font-size: 0.9em;
+      color: #777;
+    }
   </style>
 </head>
 <body>
@@ -179,47 +203,23 @@
   <h1>Believing is Seeing: Unobserved Object Detection using Generative Models</h1>
   <h2>CVPR 2025</h2>
 
-  <div class="authors">
+  <div class="authors" aria-label="Authors">
     <a href="https://1ssb.github.io" target="_blank">Subhransu S. Bhattacharjee</a>
     <a href="https://sites.google.com/view/djcampbell" target="_blank">Dylan Campbell</a>
     <a href="https://rahulsho.me" target="_blank">Rahul Shome</a>
   </div>
 
-   <div class="video-wrapper">
+  <div class="video-wrapper">
     <div class="video-embed">
       <iframe 
         src="https://www.youtube.com/embed/ke3g0Fus9vI?start=61" 
-        title="YouTube video"
-        frameborder="0"
+        title="Unobserved Object Detection Video"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowfullscreen
         loading="lazy">
       </iframe>
     </div>
   </div>
-  
-  <style>
-    .video-wrapper {
-      margin-bottom: 30px;
-    }
-  
-    .video-embed {
-      position: relative;
-      width: 100%;
-      padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
-      height: 0;
-      overflow: hidden;
-      border-radius: 10px;
-    }
-  
-    .video-embed iframe {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
-      border: 0;
-    }
-  </style>
 
   <hr>
 
@@ -232,7 +232,7 @@
   </p>
 
   <h2>Task Definition</h2>
-  <img src="assets/images/UOD.svg" alt="Unobserved Object Detection Example" class="task-image" width="400" height="200" loading="lazy" />
+  <img src="assets/images/UOD.svg" alt="UOD Illustration" class="task-image" width="400" height="200" loading="lazy" />
   <p>
     <strong>Unobserved Object Detection (UOD)</strong> is the task of inferring the presence and spatial location of objects that are not directly visible within an image frame but are present in the surrounding environment. 
     This includes objects that are occluded or lie just outside the camera's field-of-view. The task is explored in three settings — 2D images with partial views, 3D scenes with occlusions, and 2.5D scenes (2D images augmented with depth information).
@@ -240,7 +240,7 @@
 
   <h2>Resources</h2>
   <p class="resources">
-    <a href="https://arxiv.org/abs/2410.05869" target="_blank">
+    <a href="https://arxiv.org/abs/2410.05869" target="_blank" aria-label="Read Paper on arXiv">
       <img src="https://img.shields.io/badge/Read%20Paper-arXiv-red?style=for-the-badge&logo=arxiv" alt="Read Paper" />
     </a>
     <a href="#" id="code-badge">
@@ -252,7 +252,7 @@
   <figure>
     <img id="results-image" src="assets/images/results.png" alt="Detection Results" width="800" height="400" loading="lazy" />
     <figcaption>
-      Each row shows the predicted 2D and top-down 3D spatial distributions generated by each method...
+      Each row shows the predicted 2D and top-down 3D spatial distributions...
       <span class="math">\(\mathcal{I}\)</span> and <span class="math">\(\mathbb{I}\)</span>.
     </figcaption>
   </figure>
@@ -278,6 +278,10 @@
 }</pre>
     </div>
   </div>
+
+  <footer>
+    Contact: Lead Author — <a href="mailto:Subhransu.Bhattacharjee@anu.edu.au">Subhransu.Bhattacharjee@anu.edu.au</a>
+  </footer>
 </div>
 
 <script>
