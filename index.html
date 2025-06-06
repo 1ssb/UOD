@@ -8,7 +8,6 @@
 
   <!-- Fonts and Icons -->
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.3/katex.min.css" crossorigin="anonymous" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" />
 
@@ -17,33 +16,6 @@
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.3/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
 
   <style>
-
-    .task-section {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      align-items: flex-start;
-      margin-top: 10px;
-    }
-    
-    .task-image-wrapper {
-      flex: 1 1 300px;
-      max-width: 40%;
-    }
-    
-    .task-image-wrapper img {
-      width: 100%;
-      height: auto;
-      border-radius: 8px;
-      border: 1px solid #ddd;
-    }
-    
-    .task-text {
-      flex: 1 1 55%;
-      min-width: 250px;
-    }
-
-    
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background-color: #f9f9f9;
@@ -55,11 +27,7 @@
       transition: background 0.3s, color 0.3s;
     }
 
-    h1 {
-      color: #003366;
-      font-size: 2rem;
-    }
-
+    h1 { color: #003366; font-size: 2rem; }
     h2 {
       color: #0066cc;
       border-bottom: 1px solid #ddd;
@@ -67,14 +35,8 @@
       margin-top: 40px;
     }
 
-    a {
-      color: #0077cc;
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
+    a { color: #0077cc; text-decoration: none; }
+    a:hover { text-decoration: underline; }
 
     .container {
       background: #fff;
@@ -83,15 +45,9 @@
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
     }
 
-    .authors a {
-      font-weight: 600;
-      margin-right: 12px;
-    }
+    .authors a { font-weight: 600; margin-right: 12px; }
 
-    .video-wrapper {
-      margin: 30px 0;
-    }
-
+    .video-wrapper { margin: 30px 0; }
     .video-embed {
       position: relative;
       width: 100%;
@@ -100,28 +56,37 @@
       overflow: hidden;
       border-radius: 10px;
     }
-
     .video-embed iframe {
       position: absolute;
       top: 0; left: 0;
-      width: 100%;
-      height: 100%;
+      width: 100%; height: 100%;
       border: none;
     }
 
-    .task-image {
-      float: right;
-      margin: 10px 0 20px 20px;
+    .task-section {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      align-items: flex-start;
+      margin-top: 10px;
+    }
+    .task-image-wrapper {
+      flex: 1 1 300px;
       max-width: 40%;
+    }
+    .task-image-wrapper img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+    }
+    .task-text {
+      flex: 1 1 55%;
+      min-width: 250px;
     }
 
     @media (max-width: 768px) {
-      .task-image {
-        float: none;
-        margin: 20px auto;
-        display: block;
-        max-width: 100%;
-      }
+      .task-section { flex-direction: column; }
     }
 
     .resources a {
@@ -134,7 +99,6 @@
       position: relative;
       margin-top: 10px;
     }
-
     .copy-button {
       position: absolute;
       top: 8px;
@@ -146,7 +110,6 @@
       cursor: pointer;
       font-size: 14px;
     }
-
     .code-block {
       background-color: #f4f4f4;
       border-left: 4px solid #444;
@@ -156,7 +119,6 @@
       font-family: 'Courier New', monospace;
     }
 
-    /* Zoomable Image */
     .zoom-container {
       text-align: center;
       margin-top: 20px;
@@ -165,7 +127,6 @@
       background-color: #fcfcfc;
       border-radius: 10px;
     }
-
     .zoomable-image {
       max-width: 100%;
       height: auto;
@@ -174,7 +135,6 @@
       border-radius: 8px;
       transition: transform 0.3s ease, border-color 0.3s;
     }
-
     .zoomable-image:hover {
       border-color: #0077cc;
       transform: scale(1.01);
@@ -192,7 +152,6 @@
       z-index: 1000;
       cursor: zoom-out;
     }
-
     .zoom-overlay img {
       max-width: 90vw;
       max-height: 90vh;
@@ -200,47 +159,29 @@
       box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
     }
 
-    /* Dark Mode */
     .dark-mode {
       background-color: #1d1d1d;
       color: #f0f0f0;
     }
-
-    .dark-mode .container {
-      background-color: #2c2c2c;
-    }
-
-    .dark-mode h1, .dark-mode h2 {
-      color: #f9f9f9;
-    }
-
-    .dark-mode a {
-      color: #66b3ff;
-    }
-
+    .dark-mode .container { background-color: #2c2c2c; }
+    .dark-mode h1, .dark-mode h2 { color: #f9f9f9; }
+    .dark-mode a { color: #66b3ff; }
     .dark-mode .code-block {
       background-color: #2e2e2e;
       color: #fff;
       border-left-color: #66b3ff;
     }
-
     .dark-mode .copy-button,
     .dark-mode #theme-toggle {
       background-color: #444;
       color: #fff;
     }
-
     .dark-mode .zoom-container {
       background-color: #2a2a2a;
       border-color: #444;
     }
-
     .dark-mode .zoomable-image {
       border-color: #555;
-    }
-
-    .dark-mode .zoomable-image:hover {
-      border-color: #66b3ff;
     }
 
     #theme-toggle {
@@ -290,8 +231,7 @@
         src="https://www.youtube.com/embed/ke3g0Fus9vI?start=61" 
         title="Project Video"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen loading="lazy">
-      </iframe>
+        allowfullscreen loading="lazy"></iframe>
     </div>
   </div>
 
@@ -315,22 +255,25 @@
     </div>
   </div>
 
-  
   <h2>Paper</h2>
   <div class="resources">
     <a href="https://arxiv.org/abs/2410.05869" target="_blank">
       <img src="https://img.shields.io/badge/Read%20Paper-arXiv-red?style=for-the-badge&logo=arxiv" alt="Read Paper">
     </a>
   </div>
-  
+
+  <h2>Paper Preview</h2>
+  <figure class="zoom-container">
+    <img id="paper-preview" src="assets/images/first.svg" alt="First Page of the Paper" class="zoomable-image" loading="lazy">
+    <figcaption>Click to zoom the first page of the paper.</figcaption>
+  </figure>
+
   <h2>Code</h2>
   <div class="resources">
     <a href="https://github.com/1ssb/UOD" target="_blank">
       <img src="https://img.shields.io/badge/View%20on%20GitHub-UOD-blue?style=for-the-badge&logo=github" alt="View on GitHub">
     </a>
-    <p style="margin-top: 10px;">
-      Codebase is being released in stages. Metrics implementation now available.
-    </p>
+    <p style="margin-top: 10px;">Codebase is being released in stages. Metrics implementation now available.</p>
   </div>
 
   <h2>Results</h2>
@@ -338,12 +281,24 @@
     <img id="results-image" src="assets/images/results.png" alt="Detection Results" class="zoomable-image" loading="lazy">
     <figcaption>
       <strong>Figure:</strong> Each row shows spatial predictions by different models across object types (TV, fridge, sink, laptop). 
-      Triangle = camera; dashed lines = frustum; star = ground truth. Warmer heatmap = higher object likelihood. Probabilities are normalized across the heatmap.
+      Triangle = camera; dashed lines = frustum; star = ground truth. Warmer heatmap = higher object likelihood.
     </figcaption>
   </figure>
 
   <h2>Poster</h2>
-  <img src="assets/images/Final.png" alt="Project Poster" width="800" height="auto" loading="lazy" />
+  <figure class="zoom-container">
+    <img id="poster-image" src="assets/images/Final.png" alt="Project Poster" class="zoomable-image" loading="lazy">
+    <figcaption>Click to zoom the full poster.</figcaption>
+  </figure>
+
+  <h2>Acknowledgments</h2>
+  <p>
+    Subhransu is supported by the University Research Scholarship at the Australian National University. This research
+    was partially funded by the U.S. Government under DARPA TIAMAT HR00112490421. The views and conclusions expressed
+    in this document are solely those of the authors and do not represent the official policies or endorsements,
+    either expressed or implied, of the U.S. Government. This research was also funded by the Australian Research Council
+    under the scheme ITRH IH210100030.
+  </p>
 
   <h2>Cite As</h2>
   <div class="code-block-container">
@@ -359,12 +314,11 @@
   </div>
 
   <footer>
-    Contact: Lead Author — <a href="mailto:Subhransu.Bhattacharjee@anu.edu.au">Subhransu.Bhattacharjee@anu.edu.au</a>
+    Contact: Corresponding Author — <a href="mailto:Subhransu.Bhattacharjee@anu.edu.au">Subhransu.Bhattacharjee@anu.edu.au</a>
   </footer>
 </div>
 
 <script>
-  // Theme Toggle
   const themeToggle = document.getElementById('theme-toggle');
   themeToggle.addEventListener('click', () => {
     document.body.classList.toggle('dark-mode');
@@ -373,7 +327,6 @@
     icon.classList.toggle("fa-sun");
   });
 
-  // Copy to Clipboard
   const copyBtn = document.getElementById('copy-btn');
   copyBtn.addEventListener('click', () => {
     const text = document.getElementById('citation-code').innerText;
@@ -383,13 +336,17 @@
     });
   });
 
-  // Zoom Image
-  document.getElementById('results-image').addEventListener('click', () => {
-    const overlay = document.createElement('div');
-    overlay.className = 'zoom-overlay';
-    overlay.innerHTML = `<img src="assets/images/results.png" alt="Zoomed Detection Results" />`;
-    overlay.addEventListener('click', () => document.body.removeChild(overlay));
-    document.body.appendChild(overlay);
+  ['results-image', 'poster-image', 'paper-preview'].forEach(id => {
+    const img = document.getElementById(id);
+    if (img) {
+      img.addEventListener('click', () => {
+        const overlay = document.createElement('div');
+        overlay.className = 'zoom-overlay';
+        overlay.innerHTML = `<img src="${img.src}" alt="${img.alt}" />`;
+        overlay.addEventListener('click', () => document.body.removeChild(overlay));
+        document.body.appendChild(overlay);
+      });
+    }
   });
 </script>
 
