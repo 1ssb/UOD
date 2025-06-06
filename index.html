@@ -158,6 +158,24 @@
       font-family: 'Courier New', monospace;
     }
 
+    .paper-preview {
+      width: 100%;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+      background-color: #fff;
+    }
+    .zoomable {
+      width: 100%;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+      cursor: zoom-in;
+      transition: transform 0.3s ease, border-color 0.3s;
+    }
+    .zoomable:hover {
+      border-color: #0077cc;
+      transform: scale(1.01);
+    }
+
     .zoom-overlay {
       position: fixed;
       top: 0;
@@ -201,6 +219,10 @@
     .dark-mode #theme-toggle {
       background-color: #444;
       color: #fff;
+    }
+    /* Ensure paper preview SVG stays visible in dark mode */
+    .dark-mode .paper-preview {
+      background-color: #fff;
     }
 
     #theme-toggle {
@@ -257,20 +279,18 @@
 
     <h2>Abstract</h2>
     <p>
-      Can objects that are not visible in an image—but are in the
-      vicinity of the camera—be detected? This study introduces
-      the novel tasks of 2D, 2.5D and 3D unobserved object de-
-      tection for predicting the location of nearby objects that are
-      occluded or lie outside the image frame. We adapt several
-      state-of-the-art pre-trained generative models to address
-      this task, including 2D and 3D diffusion models and vision–
-      language models, and show that they can be used to infer the
-      presence of objects that are not directly observed. To bench-
-      mark this task, we propose a suite of metrics that capture
-      different aspects of performance. Our empirical evaluation
-      on indoor scenes from the RealEstate10k and NYU Depth
-      V2 datasets demonstrate results that motivate the use of
-      generative models for the unobserved object detection task.
+      Can objects that are not visible in an image—but are in the vicinity of the
+      camera—be detected? This study introduces the novel tasks of 2D, 2.5D and 3D
+      unobserved object detection for predicting the location of nearby objects
+      that are occluded or lie outside the image frame. We adapt several
+      state-of-the-art pre-trained generative models to address this task,
+      including 2D and 3D diffusion models and vision–language models, and show
+      that they can be used to infer the presence of objects that are not
+      directly observed. To benchmark this task, we propose a suite of metrics
+      that capture different aspects of performance. Our empirical evaluation on
+      indoor scenes from the RealEstate10k and NYU Depth V2 datasets demonstrate
+      results that motivate the use of generative models for the unobserved
+      object detection task.
     </p>
 
     <h2>Task Definition</h2>
@@ -284,11 +304,15 @@
         />
       </div>
       <div class="task-text">
-      <p>
-        The task of <strong>unobserved object detection</strong> is to detect objects that are present in the scene but not captured within the camera frustum. In this paper, we address this by predicting a conditional distribution over a bounded spatial region and a set of semantic labels from a single RGB image. We refer to this distribution as a <strong>spatio-semantic distribution</strong> visualized as a heatmap.
-      </p>
-
-
+        <p>
+          The task of <strong>unobserved object detection</strong> is to detect
+          objects that are present in the scene but not captured within the
+          camera frustum. In this paper, we address this by predicting a
+          conditional distribution over a bounded spatial region and a set of
+          semantic labels from a single RGB image. We refer to this distribution
+          as a <strong>spatio-semantic distribution</strong>, visualized as a
+          heatmap.
+        </p>
       </div>
     </div>
 
@@ -298,7 +322,7 @@
         <img
           src="assets/images/first.svg"
           alt="First Page of the Paper"
-          style="width: 100%; border-radius: 8px; border: 1px solid #ddd;"
+          class="paper-preview"
           loading="lazy"
         />
       </a>
@@ -326,12 +350,12 @@
         alt="Detection Results"
         class="zoomable"
         loading="lazy"
-        style="width: 100%; border-radius: 8px; border: 1px solid #ddd; cursor: zoom-in; transition: transform 0.3s ease, border-color 0.3s;"
       />
       <figcaption>
-        <strong>Figure:</strong> Each row shows spatial predictions by different models across object
-        types (TV, fridge, sink, laptop). The white star represents ground truth.
-        Warmer heatmap indicates higher object likelihood.
+        <strong>Figure:</strong> Each row shows spatial predictions by different
+        models across object types (TV, fridge, sink, laptop). The white star
+        represents ground truth. Warmer heatmap indicates higher object
+        likelihood.
       </figcaption>
     </figure>
 
@@ -343,18 +367,19 @@
         alt="Project Poster"
         class="zoomable"
         loading="lazy"
-        style="width: 100%; border-radius: 8px; border: 1px solid #ddd; cursor: zoom-in; transition: transform 0.3s ease, border-color 0.3s;"
       />
       <figcaption>Click to zoom the full poster.</figcaption>
     </figure>
 
     <h2>Acknowledgments</h2>
     <p>
-      Subhransu is supported by the University Research Scholarship at the Australian National University.
-      This research was partially funded by the U.S. Government under DARPA TIAMAT HR00112490421. The
-      views and conclusions expressed in this document are solely those of the authors and do not represent
-      the official policies or endorsements, either expressed or implied, of the U.S. Government. This
-      research was also funded by the Australian Research Council under the scheme ITRH IH210100030.
+      Subhransu is supported by the University Research Scholarship at the
+      Australian National University. This research was partially funded by the
+      U.S. Government under DARPA TIAMAT HR00112490421. The views and conclusions
+      expressed in this document are solely those of the authors and do not
+      represent the official policies or endorsements, either expressed or
+      implied, of the U.S. Government. This research was also funded by the
+      Australian Research Council under the scheme ITRH IH210100030.
     </p>
 
     <h2>Cite As</h2>
@@ -373,7 +398,7 @@
     </div>
 
     <footer>
-      Contact: Corresponding Author — 
+      Contact: Corresponding Author —
       <a href="mailto:Subhransu.Bhattacharjee@anu.edu.au">Subhransu.Bhattacharjee@anu.edu.au</a>
     </footer>
   </div>
@@ -398,7 +423,7 @@
       });
     });
 
-    // Zoom functionality for any element with class "zoomable"
+    // Zoom functionality for any element with class "zoomable" or task image
     document.querySelectorAll('.zoomable, .task-image-wrapper img').forEach((img) => {
       img.addEventListener('click', () => {
         const overlay = document.createElement('div');
