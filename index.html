@@ -6,30 +6,38 @@
   <meta name="description" content="Believing is Seeing: Unobserved Object Detection using Generative Models." />
   <title>Believing is Seeing: Unobserved Object Detection</title>
 
-  <!-- Performance Optimizations -->
+  <!-- Fonts and Icons -->
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.3/katex.min.css" crossorigin="anonymous" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" />
 
-  <!-- Scripts -->
+  <!-- KaTeX -->
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.3/katex.min.js"></script>
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.3/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
 
   <style>
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f7f7f7;
+      background-color: #f9f9f9;
       color: #333;
-      margin: 0 auto;
-      padding: 20px;
       max-width: 900px;
-      line-height: 1.7;
-      transition: background-color 0.3s, color 0.3s;
+      margin: auto;
+      padding: 20px;
+      line-height: 1.6;
+      transition: background 0.3s, color 0.3s;
     }
 
-    h1, h2 {
-      color: #2c2c2c;
+    h1 {
+      color: #003366;
+      font-size: 2rem;
+    }
+
+    h2 {
+      color: #0066cc;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 5px;
+      margin-top: 40px;
     }
 
     a {
@@ -42,45 +50,62 @@
     }
 
     .container {
-      background-color: #ffffff;
+      background: #fff;
       padding: 30px;
       border-radius: 10px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-    }
-
-    figure, img {
-      margin: 0 auto;
-      display: block;
-      border-radius: 8px;
-    }
-
-    figcaption {
-      font-size: 0.9em;
-      color: #666;
-      margin-top: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
     }
 
     .authors a {
       font-weight: 600;
-      margin-right: 10px;
+      margin-right: 12px;
+    }
+
+    .video-wrapper {
+      margin: 30px 0;
+    }
+
+    .video-embed {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border-radius: 10px;
+    }
+
+    .video-embed iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .task-image {
+      float: right;
+      margin: 10px 0 20px 20px;
+      max-width: 40%;
+    }
+
+    @media (max-width: 768px) {
+      .task-image {
+        float: none;
+        margin: 20px auto;
+        display: block;
+        max-width: 100%;
+      }
     }
 
     .resources a {
       display: inline-block;
-      margin: 10px 10px 0 0;
-    }
-
-    .code-block {
-      background-color: #f4f4f4;
-      border-left: 4px solid #444;
-      padding: 12px;
-      overflow-x: auto;
-      white-space: pre-wrap;
-      font-family: 'Courier New', monospace;
+      margin-top: 10px;
+      margin-right: 10px;
     }
 
     .code-block-container {
       position: relative;
+      margin-top: 10px;
     }
 
     .copy-button {
@@ -93,13 +118,62 @@
       padding: 6px;
       cursor: pointer;
       font-size: 14px;
-      transition: background-color 0.3s ease;
     }
 
-    .copy-button:hover {
-      background-color: #ccc;
+    .code-block {
+      background-color: #f4f4f4;
+      border-left: 4px solid #444;
+      padding: 12px;
+      overflow-x: auto;
+      white-space: pre-wrap;
+      font-family: 'Courier New', monospace;
     }
 
+    /* Zoomable Image */
+    .zoom-container {
+      text-align: center;
+      margin-top: 20px;
+      border: 2px dashed #e0e0e0;
+      padding: 10px;
+      background-color: #fcfcfc;
+      border-radius: 10px;
+    }
+
+    .zoomable-image {
+      max-width: 100%;
+      height: auto;
+      cursor: zoom-in;
+      border: 3px solid #ddd;
+      border-radius: 8px;
+      transition: transform 0.3s ease, border-color 0.3s;
+    }
+
+    .zoomable-image:hover {
+      border-color: #0077cc;
+      transform: scale(1.01);
+    }
+
+    .zoom-overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.92);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      cursor: zoom-out;
+    }
+
+    .zoom-overlay img {
+      max-width: 90vw;
+      max-height: 90vh;
+      border-radius: 10px;
+      box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+    }
+
+    /* Dark Mode */
     .dark-mode {
       background-color: #1d1d1d;
       color: #f0f0f0;
@@ -120,13 +194,26 @@
     .dark-mode .code-block {
       background-color: #2e2e2e;
       color: #fff;
-      border-left: 4px solid #66b3ff;
+      border-left-color: #66b3ff;
     }
 
     .dark-mode .copy-button,
     .dark-mode #theme-toggle {
       background-color: #444;
       color: #fff;
+    }
+
+    .dark-mode .zoom-container {
+      background-color: #2a2a2a;
+      border-color: #444;
+    }
+
+    .dark-mode .zoomable-image {
+      border-color: #555;
+    }
+
+    .dark-mode .zoomable-image:hover {
+      border-color: #66b3ff;
     }
 
     #theme-toggle {
@@ -144,57 +231,18 @@
       justify-content: center;
       font-size: 20px;
       cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-
-    .video-wrapper {
-      margin-bottom: 30px;
-    }
-
-    .video-embed {
-      position: relative;
-      width: 100%;
-      padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
-      height: 0;
-      overflow: hidden;
-      border-radius: 10px;
-    }
-
-    .video-embed iframe {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
-      border: 0;
-    }
-
-    .task-image {
-      float: right;
-      margin-left: 20px;
-      margin-top: 10px;
-      max-width: 40%;
-    }
-
-    @media screen and (max-width: 768px) {
-      .task-image {
-        float: none;
-        display: block;
-        margin: 20px auto;
-        max-width: 100%;
-      }
     }
 
     footer {
-      margin-top: 40px;
-      text-align: center;
+      margin-top: 50px;
       font-size: 0.9em;
       color: #777;
+      text-align: center;
     }
   </style>
 </head>
 <body>
 
-<!-- Theme Toggle Button -->
 <button id="theme-toggle" aria-label="Toggle dark/light mode">
   <i class="fas fa-moon"></i>
 </button>
@@ -203,7 +251,7 @@
   <h1>Believing is Seeing: Unobserved Object Detection using Generative Models</h1>
   <h2>CVPR 2025</h2>
 
-  <div class="authors" aria-label="Authors">
+  <div class="authors">
     <a href="https://1ssb.github.io" target="_blank">Subhransu S. Bhattacharjee</a>
     <a href="https://sites.google.com/view/djcampbell" target="_blank">Dylan Campbell</a>
     <a href="https://rahulsho.me" target="_blank">Rahul Shome</a>
@@ -213,15 +261,12 @@
     <div class="video-embed">
       <iframe 
         src="https://www.youtube.com/embed/ke3g0Fus9vI?start=61" 
-        title="Unobserved Object Detection Video"
+        title="Project Video"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen
-        loading="lazy">
+        allowfullscreen loading="lazy">
       </iframe>
     </div>
   </div>
-
-  <hr>
 
   <h2>Abstract</h2>
   <p>
@@ -232,28 +277,27 @@
   </p>
 
   <h2>Task Definition</h2>
-  <img src="assets/images/UOD.svg" alt="UOD Illustration" class="task-image" width="400" height="200" loading="lazy" />
+  <img src="assets/images/UOD.svg" alt="UOD Example" class="task-image" width="400" height="200" loading="lazy">
   <p>
-    <strong>Unobserved Object Detection (UOD)</strong> is the task of inferring the presence and spatial location of objects that are not directly visible within an image frame but are present in the surrounding environment. 
-    This includes objects that are occluded or lie just outside the camera's field-of-view. The task is explored in three settings — 2D images with partial views, 3D scenes with occlusions, and 2.5D scenes (2D images augmented with depth information).
+    <strong>Unobserved Object Detection (UOD)</strong> refers to inferring objects beyond direct view—outside the frame or occluded. We explore this in 2D (partial views), 2.5D (with depth), and full 3D scene inference.
   </p>
 
   <h2>Resources</h2>
   <p class="resources">
-    <a href="https://arxiv.org/abs/2410.05869" target="_blank" aria-label="Read Paper on arXiv">
-      <img src="https://img.shields.io/badge/Read%20Paper-arXiv-red?style=for-the-badge&logo=arxiv" alt="Read Paper" />
+    <a href="https://arxiv.org/abs/2410.05869" target="_blank">
+      <img src="https://img.shields.io/badge/Read%20Paper-arXiv-red?style=for-the-badge&logo=arxiv" alt="Read Paper">
     </a>
-    <a href="#" id="code-badge">
-      <img src="https://img.shields.io/badge/Code-Coming%20Soon-blue?style=for-the-badge&logo=github" alt="Code Coming Soon" />
+    <a href="#">
+      <img src="https://img.shields.io/badge/Code-Coming%20Soon-blue?style=for-the-badge&logo=github" alt="Code Coming Soon">
     </a>
   </p>
 
   <h2>Results</h2>
-  <figure>
-    <img id="results-image" src="assets/images/results.png" alt="Detection Results" width="800" height="400" loading="lazy" />
+  <figure class="zoom-container">
+    <img id="results-image" src="assets/images/results.png" alt="Detection Results" class="zoomable-image" loading="lazy">
     <figcaption>
-      Each row shows the predicted 2D and top-down 3D spatial distributions...
-      <span class="math">\(\mathcal{I}\)</span> and <span class="math">\(\mathbb{I}\)</span>.
+      <strong>Figure:</strong> Each row shows spatial predictions by different models across object types (TV, fridge, sink, laptop). 
+      Triangle = camera; dashed lines = frustum; star = ground truth. Warmer heatmap = higher object likelihood.
     </figcaption>
   </figure>
 
@@ -261,13 +305,11 @@
   <img src="assets/images/Final.png" alt="Project Poster" width="800" height="auto" loading="lazy" />
 
   <h2>Usage</h2>
-  <p>Once released, detailed instructions for running the experiments and reproducing results will be provided.</p>
+  <p>Once released, usage instructions and reproducibility guides will be made available on the GitHub repository.</p>
 
   <h2>Cite As</h2>
   <div class="code-block-container">
-    <button id="copy-btn" class="copy-button" title="Copy to clipboard">
-      <i class="fas fa-copy"></i>
-    </button>
+    <button id="copy-btn" class="copy-button" title="Copy citation"><i class="fas fa-copy"></i></button>
     <div class="code-block">
 <pre id="citation-code">@inproceedings{bhattacharjee2025uod,
   title={{Believing is Seeing}: Unobserved Object Detection using Generative Models},
@@ -285,23 +327,32 @@
 </div>
 
 <script>
+  // Theme Toggle
   const themeToggle = document.getElementById('theme-toggle');
   themeToggle.addEventListener('click', () => {
     document.body.classList.toggle('dark-mode');
     const icon = themeToggle.querySelector("i");
-    icon.classList.toggle("fa-sun");
     icon.classList.toggle("fa-moon");
+    icon.classList.toggle("fa-sun");
   });
 
+  // Copy to Clipboard
   const copyBtn = document.getElementById('copy-btn');
   copyBtn.addEventListener('click', () => {
-    const citation = document.getElementById('citation-code').innerText;
-    navigator.clipboard.writeText(citation).then(() => {
+    const text = document.getElementById('citation-code').innerText;
+    navigator.clipboard.writeText(text).then(() => {
       copyBtn.innerHTML = '<i class="fas fa-check"></i>';
-      setTimeout(() => {
-        copyBtn.innerHTML = '<i class="fas fa-copy"></i>';
-      }, 2000);
+      setTimeout(() => copyBtn.innerHTML = '<i class="fas fa-copy"></i>', 2000);
     });
+  });
+
+  // Zoom Image
+  document.getElementById('results-image').addEventListener('click', () => {
+    const overlay = document.createElement('div');
+    overlay.className = 'zoom-overlay';
+    overlay.innerHTML = `<img src="assets/images/results.png" alt="Zoomed Detection Results" />`;
+    overlay.addEventListener('click', () => document.body.removeChild(overlay));
+    document.body.appendChild(overlay);
   });
 </script>
 
