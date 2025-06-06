@@ -17,6 +17,33 @@
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.3/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
 
   <style>
+
+    .task-section {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      align-items: flex-start;
+      margin-top: 10px;
+    }
+    
+    .task-image-wrapper {
+      flex: 1 1 300px;
+      max-width: 40%;
+    }
+    
+    .task-image-wrapper img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+    }
+    
+    .task-text {
+      flex: 1 1 55%;
+      min-width: 250px;
+    }
+
+    
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background-color: #f9f9f9;
@@ -277,10 +304,17 @@
   </p>
 
   <h2>Task Definition</h2>
-  <img src="assets/images/UOD.svg" alt="UOD Example" class="task-image" width="400" height="200" loading="lazy">
-  <p>
-    <strong>Unobserved Object Detection (UOD)</strong> refers to inferring objects beyond direct view—outside the frame or occluded. We explore this in 2D (partial views), 2.5D (with depth), and full 3D scene inference.
-  </p>
+  <div class="task-section">
+    <div class="task-image-wrapper">
+      <img src="assets/images/UOD.svg" alt="UOD Example" loading="lazy" />
+    </div>
+    <div class="task-text">
+      <p>
+        <strong>Unobserved Object Detection (UOD)</strong> refers to inferring objects beyond direct view—outside the frame or occluded. We explore this in 2D (partial views), 2.5D (with depth), and full 3D scene inference.
+      </p>
+    </div>
+  </div>
+
   
   <h2>Paper</h2>
   <div class="resources">
@@ -299,14 +333,12 @@
     </p>
   </div>
 
-
-
   <h2>Results</h2>
   <figure class="zoom-container">
     <img id="results-image" src="assets/images/results.png" alt="Detection Results" class="zoomable-image" loading="lazy">
     <figcaption>
       <strong>Figure:</strong> Each row shows spatial predictions by different models across object types (TV, fridge, sink, laptop). 
-      Triangle = camera; dashed lines = frustum; star = ground truth. Warmer heatmap = higher object likelihood.
+      Triangle = camera; dashed lines = frustum; star = ground truth. Warmer heatmap = higher object likelihood. Probabilities are normalized across the heatmap.
     </figcaption>
   </figure>
 
@@ -321,8 +353,7 @@
   title={{Believing is Seeing}: Unobserved Object Detection using Generative Models},
   author={Bhattacharjee, Subhransu S. and Campbell, Dylan and Shome, Rahul},
   booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
-  year={2025},
-  note={To Appear}
+  year={2025}
 }</pre>
     </div>
   </div>
