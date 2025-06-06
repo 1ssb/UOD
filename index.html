@@ -8,12 +8,27 @@
 
   <!-- Fonts and Icons -->
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.3/katex.min.css" crossorigin="anonymous" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.3/katex.min.css"
+    crossorigin="anonymous"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    crossorigin="anonymous"
+  />
 
   <!-- KaTeX -->
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.3/katex.min.js"></script>
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.3/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
+  <script
+    defer
+    src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.3/katex.min.js"
+  ></script>
+  <script
+    defer
+    src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.3/contrib/auto-render.min.js"
+    onload="renderMathInElement(document.body);"
+  ></script>
 
   <style>
     body {
@@ -27,7 +42,11 @@
       transition: background 0.3s, color 0.3s;
     }
 
-    h1 { color: #003366; font-size: 2rem; }
+    h1 {
+      color: #003366;
+      font-size: 2rem;
+      margin-bottom: 0.2em;
+    }
     h2 {
       color: #0066cc;
       border-bottom: 1px solid #ddd;
@@ -35,8 +54,13 @@
       margin-top: 40px;
     }
 
-    a { color: #0077cc; text-decoration: none; }
-    a:hover { text-decoration: underline; }
+    a {
+      color: #0077cc;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
 
     .container {
       background: #fff;
@@ -45,9 +69,14 @@
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
     }
 
-    .authors a { font-weight: 600; margin-right: 12px; }
+    .authors a {
+      font-weight: 600;
+      margin-right: 12px;
+    }
 
-    .video-wrapper { margin: 30px 0; }
+    .video-wrapper {
+      margin: 30px 0;
+    }
     .video-embed {
       position: relative;
       width: 100%;
@@ -58,8 +87,10 @@
     }
     .video-embed iframe {
       position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       border: none;
     }
 
@@ -79,6 +110,12 @@
       height: auto;
       border-radius: 8px;
       border: 1px solid #ddd;
+      cursor: zoom-in;
+      transition: transform 0.3s ease, border-color 0.3s;
+    }
+    .task-image-wrapper img:hover {
+      border-color: #0077cc;
+      transform: scale(1.01);
     }
     .task-text {
       flex: 1 1 55%;
@@ -86,7 +123,9 @@
     }
 
     @media (max-width: 768px) {
-      .task-section { flex-direction: column; }
+      .task-section {
+        flex-direction: column;
+      }
     }
 
     .resources a {
@@ -119,30 +158,10 @@
       font-family: 'Courier New', monospace;
     }
 
-    .zoom-container {
-      text-align: center;
-      margin-top: 20px;
-      border: 2px dashed #e0e0e0;
-      padding: 10px;
-      background-color: #fcfcfc;
-      border-radius: 10px;
-    }
-    .zoomable-image {
-      max-width: 100%;
-      height: auto;
-      cursor: zoom-in;
-      border: 3px solid #ddd;
-      border-radius: 8px;
-      transition: transform 0.3s ease, border-color 0.3s;
-    }
-    .zoomable-image:hover {
-      border-color: #0077cc;
-      transform: scale(1.01);
-    }
-
     .zoom-overlay {
       position: fixed;
-      top: 0; left: 0;
+      top: 0;
+      left: 0;
       width: 100vw;
       height: 100vh;
       background: rgba(0, 0, 0, 0.92);
@@ -163,9 +182,16 @@
       background-color: #1d1d1d;
       color: #f0f0f0;
     }
-    .dark-mode .container { background-color: #2c2c2c; }
-    .dark-mode h1, .dark-mode h2 { color: #f9f9f9; }
-    .dark-mode a { color: #66b3ff; }
+    .dark-mode .container {
+      background-color: #2c2c2c;
+    }
+    .dark-mode h1,
+    .dark-mode h2 {
+      color: #f9f9f9;
+    }
+    .dark-mode a {
+      color: #66b3ff;
+    }
     .dark-mode .code-block {
       background-color: #2e2e2e;
       color: #fff;
@@ -175,13 +201,6 @@
     .dark-mode #theme-toggle {
       background-color: #444;
       color: #fff;
-    }
-    .dark-mode .zoom-container {
-      background-color: #2a2a2a;
-      border-color: #444;
-    }
-    .dark-mode .zoomable-image {
-      border-color: #555;
     }
 
     #theme-toggle {
@@ -210,135 +229,177 @@
   </style>
 </head>
 <body>
+  <button id="theme-toggle" aria-label="Toggle dark/light mode">
+    <i class="fas fa-moon"></i>
+  </button>
 
-<button id="theme-toggle" aria-label="Toggle dark/light mode">
-  <i class="fas fa-moon"></i>
-</button>
+  <div class="container">
+    <h1>Believing is Seeing: Unobserved Object Detection using Generative Models</h1>
+    <h2>CVPR 2025</h2>
 
-<div class="container">
-  <h1>Believing is Seeing: Unobserved Object Detection using Generative Models</h1>
-  <h2>CVPR 2025</h2>
-
-  <div class="authors">
-    <a href="https://1ssb.github.io" target="_blank">Subhransu S. Bhattacharjee</a>
-    <a href="https://sites.google.com/view/djcampbell" target="_blank">Dylan Campbell</a>
-    <a href="https://rahulsho.me" target="_blank">Rahul Shome</a>
-  </div>
-
-  <div class="video-wrapper">
-    <div class="video-embed">
-      <iframe 
-        src="https://www.youtube.com/embed/ke3g0Fus9vI?start=61" 
-        title="Project Video"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen loading="lazy"></iframe>
+    <div class="authors">
+      <a href="https://1ssb.github.io" target="_blank">Subhransu S. Bhattacharjee</a>
+      <a href="https://sites.google.com/view/djcampbell" target="_blank">Dylan Campbell</a>
+      <a href="https://rahulsho.me" target="_blank">Rahul Shome</a>
     </div>
-  </div>
 
-  <h2>Abstract</h2>
-  <p>
-    Can objects that are not visible in an image—but are in the vicinity of the camera—be detected?
-    This study introduces the novel tasks of 2D, 2.5D, and 3D unobserved object detection for predicting the location of nearby objects that are occluded or lie outside the image frame.
-    We adapt several state-of-the-art pre-trained generative models, including diffusion and vision-language models, and show they can infer the presence of unseen objects.
-    Our benchmark metrics and empirical evaluations on indoor scenes (RealEstate10k and NYU Depth V2 datasets) support this approach.
-  </p>
-
-  <h2>Task Definition</h2>
-  <div class="task-section">
-    <div class="task-image-wrapper">
-      <img src="assets/images/UOD.svg" alt="UOD Example" loading="lazy" />
+    <div class="video-wrapper">
+      <div class="video-embed">
+        <iframe
+          src="https://www.youtube.com/embed/ke3g0Fus9vI?start=61"
+          title="Project Video"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          loading="lazy"
+        ></iframe>
+      </div>
     </div>
-    <div class="task-text">
+
+    <h2>Abstract</h2>
+    <p>
+      Can objects that are not visible in an image—but are in the
+      vicinity of the camera—be detected? This study introduces
+      the novel tasks of 2D, 2.5D and 3D unobserved object de-
+      tection for predicting the location of nearby objects that are
+      occluded or lie outside the image frame. We adapt several
+      state-of-the-art pre-trained generative models to address
+      this task, including 2D and 3D diffusion models and vision–
+      language models, and show that they can be used to infer the
+      presence of objects that are not directly observed. To bench-
+      mark this task, we propose a suite of metrics that capture
+      different aspects of performance. Our empirical evaluation
+      on indoor scenes from the RealEstate10k and NYU Depth
+      V2 datasets demonstrate results that motivate the use of
+      generative models for the unobserved object detection task.
+    </p>
+
+    <h2>Task Definition</h2>
+    <div class="task-section">
+      <div class="task-image-wrapper">
+        <img
+          id="task-image"
+          src="assets/images/UOD.svg"
+          alt="UOD Example"
+          loading="lazy"
+        />
+      </div>
+      <div class="task-text">
       <p>
-        <strong>Unobserved Object Detection (UOD)</strong> refers to inferring objects beyond direct view—outside the frame or occluded. We explore this in 2D (partial views), 2.5D (with depth), and full 3D scene inference.
+        The task of <strong>unobserved object detection</strong> is to detect objects that are present in the scene but not captured within the camera frustum. In this paper, we address this by predicting a conditional distribution over a bounded spatial region and a set of semantic labels from a single RGB image. We refer to this distribution as a <strong>spatio-semantic distribution</strong> visualized as a heatmap.
+      </p>
+
+
+      </div>
+    </div>
+
+    <h2>Paper</h2>
+    <figure>
+      <a href="https://arxiv.org/abs/2410.05869" target="_blank">
+        <img
+          src="assets/images/first.svg"
+          alt="First Page of the Paper"
+          style="width: 100%; border-radius: 8px; border: 1px solid #ddd;"
+          loading="lazy"
+        />
+      </a>
+      <figcaption>Click image to open the full paper on arXiv.</figcaption>
+    </figure>
+
+    <h2>Code</h2>
+    <div class="resources">
+      <a href="https://github.com/1ssb/UOD" target="_blank">
+        <img
+          src="https://img.shields.io/badge/View%20on%20GitHub-UOD-blue?style=for-the-badge&logo=github"
+          alt="View on GitHub"
+        />
+      </a>
+      <p style="margin-top: 10px;">
+        Codebase is being released in stages. Metrics implementation now available.
       </p>
     </div>
-  </div>
 
-  <h2>Paper</h2>
-  <div class="resources">
-    <a href="https://arxiv.org/abs/2410.05869" target="_blank">
-      <img src="https://img.shields.io/badge/Read%20Paper-arXiv-red?style=for-the-badge&logo=arxiv" alt="Read Paper">
-    </a>
-  </div>
+    <h2>Results</h2>
+    <figure>
+      <img
+        id="results-image"
+        src="assets/images/results.png"
+        alt="Detection Results"
+        class="zoomable"
+        loading="lazy"
+        style="width: 100%; border-radius: 8px; border: 1px solid #ddd; cursor: zoom-in; transition: transform 0.3s ease, border-color 0.3s;"
+      />
+      <figcaption>
+        <strong>Figure:</strong> Each row shows spatial predictions by different models across object
+        types (TV, fridge, sink, laptop). The white star represents ground truth.
+        Warmer heatmap indicates higher object likelihood.
+      </figcaption>
+    </figure>
 
-  <h2>Paper Preview</h2>
-  <figure class="zoom-container">
-    <img id="paper-preview" src="assets/images/first.svg" alt="First Page of the Paper" class="zoomable-image" loading="lazy">
-    <figcaption>Click to zoom the first page of the paper.</figcaption>
-  </figure>
+    <h2>Poster</h2>
+    <figure>
+      <img
+        id="poster-image"
+        src="assets/images/Final.png"
+        alt="Project Poster"
+        class="zoomable"
+        loading="lazy"
+        style="width: 100%; border-radius: 8px; border: 1px solid #ddd; cursor: zoom-in; transition: transform 0.3s ease, border-color 0.3s;"
+      />
+      <figcaption>Click to zoom the full poster.</figcaption>
+    </figure>
 
-  <h2>Code</h2>
-  <div class="resources">
-    <a href="https://github.com/1ssb/UOD" target="_blank">
-      <img src="https://img.shields.io/badge/View%20on%20GitHub-UOD-blue?style=for-the-badge&logo=github" alt="View on GitHub">
-    </a>
-    <p style="margin-top: 10px;">Codebase is being released in stages. Metrics implementation now available.</p>
-  </div>
+    <h2>Acknowledgments</h2>
+    <p>
+      Subhransu is supported by the University Research Scholarship at the Australian National University.
+      This research was partially funded by the U.S. Government under DARPA TIAMAT HR00112490421. The
+      views and conclusions expressed in this document are solely those of the authors and do not represent
+      the official policies or endorsements, either expressed or implied, of the U.S. Government. This
+      research was also funded by the Australian Research Council under the scheme ITRH IH210100030.
+    </p>
 
-  <h2>Results</h2>
-  <figure class="zoom-container">
-    <img id="results-image" src="assets/images/results.png" alt="Detection Results" class="zoomable-image" loading="lazy">
-    <figcaption>
-      <strong>Figure:</strong> Each row shows spatial predictions by different models across object types (TV, fridge, sink, laptop). 
-      Triangle = camera; dashed lines = frustum; star = ground truth. Warmer heatmap = higher object likelihood.
-    </figcaption>
-  </figure>
-
-  <h2>Poster</h2>
-  <figure class="zoom-container">
-    <img id="poster-image" src="assets/images/Final.png" alt="Project Poster" class="zoomable-image" loading="lazy">
-    <figcaption>Click to zoom the full poster.</figcaption>
-  </figure>
-
-  <h2>Acknowledgments</h2>
-  <p>
-    Subhransu is supported by the University Research Scholarship at the Australian National University. This research
-    was partially funded by the U.S. Government under DARPA TIAMAT HR00112490421. The views and conclusions expressed
-    in this document are solely those of the authors and do not represent the official policies or endorsements,
-    either expressed or implied, of the U.S. Government. This research was also funded by the Australian Research Council
-    under the scheme ITRH IH210100030.
-  </p>
-
-  <h2>Cite As</h2>
-  <div class="code-block-container">
-    <button id="copy-btn" class="copy-button" title="Copy citation"><i class="fas fa-copy"></i></button>
-    <div class="code-block">
+    <h2>Cite As</h2>
+    <div class="code-block-container">
+      <button id="copy-btn" class="copy-button" title="Copy citation">
+        <i class="fas fa-copy"></i>
+      </button>
+      <div class="code-block">
 <pre id="citation-code">@inproceedings{bhattacharjee2025uod,
   title={{Believing is Seeing}: Unobserved Object Detection using Generative Models},
   author={Bhattacharjee, Subhransu S. and Campbell, Dylan and Shome, Rahul},
   booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
   year={2025}
 }</pre>
+      </div>
     </div>
+
+    <footer>
+      Contact: Corresponding Author — 
+      <a href="mailto:Subhransu.Bhattacharjee@anu.edu.au">Subhransu.Bhattacharjee@anu.edu.au</a>
+    </footer>
   </div>
 
-  <footer>
-    Contact: Corresponding Author — <a href="mailto:Subhransu.Bhattacharjee@anu.edu.au">Subhransu.Bhattacharjee@anu.edu.au</a>
-  </footer>
-</div>
-
-<script>
-  const themeToggle = document.getElementById('theme-toggle');
-  themeToggle.addEventListener('click', () => {
-    document.body.classList.toggle('dark-mode');
-    const icon = themeToggle.querySelector("i");
-    icon.classList.toggle("fa-moon");
-    icon.classList.toggle("fa-sun");
-  });
-
-  const copyBtn = document.getElementById('copy-btn');
-  copyBtn.addEventListener('click', () => {
-    const text = document.getElementById('citation-code').innerText;
-    navigator.clipboard.writeText(text).then(() => {
-      copyBtn.innerHTML = '<i class="fas fa-check"></i>';
-      setTimeout(() => copyBtn.innerHTML = '<i class="fas fa-copy"></i>', 2000);
+  <script>
+    // Toggle dark/light mode
+    const themeToggle = document.getElementById('theme-toggle');
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      const icon = themeToggle.querySelector('i');
+      icon.classList.toggle('fa-moon');
+      icon.classList.toggle('fa-sun');
     });
-  });
 
-  ['results-image', 'poster-image', 'paper-preview'].forEach(id => {
-    const img = document.getElementById(id);
-    if (img) {
+    // Copy citation text
+    const copyBtn = document.getElementById('copy-btn');
+    copyBtn.addEventListener('click', () => {
+      const citation = document.getElementById('citation-code').innerText;
+      navigator.clipboard.writeText(citation).then(() => {
+        copyBtn.innerHTML = '<i class="fas fa-check"></i>';
+        setTimeout(() => (copyBtn.innerHTML = '<i class="fas fa-copy"></i>'), 2000);
+      });
+    });
+
+    // Zoom functionality for any element with class "zoomable"
+    document.querySelectorAll('.zoomable, .task-image-wrapper img').forEach((img) => {
       img.addEventListener('click', () => {
         const overlay = document.createElement('div');
         overlay.className = 'zoom-overlay';
@@ -346,9 +407,7 @@
         overlay.addEventListener('click', () => document.body.removeChild(overlay));
         document.body.appendChild(overlay);
       });
-    }
-  });
-</script>
-
+    });
+  </script>
 </body>
 </html>
