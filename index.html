@@ -8,371 +8,177 @@
 
   <!-- Fonts and Icons -->
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.3/katex.min.css"
-    crossorigin="anonymous"
-  />
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    crossorigin="anonymous"
-  />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.3/katex.min.css" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" />
 
   <!-- KaTeX -->
-  <script
-    defer
-    src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.3/katex.min.js"
-  ></script>
-  <script
-    defer
-    src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.3/contrib/auto-render.min.js"
-    onload="renderMathInElement(document.body);"
-  ></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.3/katex.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.3/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
 
   <style>
+    :root { --bg: #f9f9f9; --text: #333; --container-bg: #fff; --primary: #0066cc; --accent: #0077cc; --border: #ddd; --shadow: rgba(0,0,0,0.06); }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f9f9f9;
-      color: #333;
-      max-width: 900px;
-      margin: auto;
-      padding: 20px;
-      line-height: 1.6;
+      background: var(--bg);
+      color: var(--text);
+      max-width: 900px; margin: 0 auto; padding: 0.75rem; line-height: 1.6;
       transition: background 0.3s, color 0.3s;
     }
-
-    h1 {
-      color: #003366;
-      font-size: 2rem;
-      margin-bottom: 0.2em;
-    }
-    h2 {
-      color: #0066cc;
-      border-bottom: 1px solid #ddd;
-      padding-bottom: 5px;
-      margin-top: 40px;
-    }
-
-    a {
-      color: #0077cc;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-
     .container {
-      background: #fff;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+      background: var(--container-bg); padding: 1rem; border-radius: 10px;
+      box-shadow: 0 4px 15px var(--shadow);
     }
-
+    h1 { font-size: 1.75rem; color: #003366; margin-bottom: 0.5rem; }
+    h2 {
+      font-size: 1.25rem; color: var(--primary);
+      border-bottom: 1px solid var(--border); padding-bottom: 0.25rem;
+      margin: 1.5rem 0 0.75rem;
+    }
+    p { margin-bottom: 1rem; }
     .authors a {
-      font-weight: 600;
-      margin-right: 12px;
+      display: inline-block; font-weight: 600; color: var(--accent);
+      text-decoration: none; margin-right: 1rem;
     }
-
-    .video-wrapper {
-      margin: 30px 0;
-    }
+    .authors a:hover { text-decoration: underline; }
+    .video-wrapper { margin: 1.5rem 0; }
     .video-embed {
-      position: relative;
-      width: 100%;
-      padding-bottom: 56.25%;
-      height: 0;
-      overflow: hidden;
-      border-radius: 10px;
+      position: relative; width: 100%; padding-bottom: 56.25%; height: 0;
+      overflow: hidden; border-radius: 10px;
     }
     .video-embed iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      border: none;
+      position: absolute; top: 0; left: 0;
+      width: 100%; height: 100%; border: 0;
     }
-
     .task-section {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      align-items: flex-start;
-      margin-top: 10px;
+      display: flex; flex-wrap: wrap; gap: 1rem;
+      align-items: flex-start; margin: 1rem 0;
     }
     .task-image-wrapper {
-      flex: 1 1 300px;
-      max-width: 40%;
+      flex: 1 1 100%; max-width: 100%; overflow: hidden;
     }
     .task-image-wrapper img {
-      width: 100%;
-      height: auto;
-      border-radius: 8px;
-      border: 1px solid #ddd;
-      cursor: zoom-in;
-      transition: transform 0.3s ease, border-color 0.3s;
+      width: 100%; height: auto; object-fit: contain;
+      border-radius: 8px; border: 1px solid var(--border);
+      cursor: zoom-in; transition: transform 0.3s, border-color 0.3s;
     }
     .task-image-wrapper img:hover {
-      border-color: #0077cc;
-      transform: scale(1.01);
+      border-color: var(--accent); transform: scale(1.02);
     }
-    .task-text {
-      flex: 1 1 55%;
-      min-width: 250px;
+    .task-text { flex: 1 1 100%; text-align: justify; margin-top: 0.5rem; }
+    figure { margin: 1.5rem 0; }
+    .paper-preview, .zoomable {
+      width: 100%; border-radius: 8px; border: 1px solid var(--border);
+      background: var(--container-bg); cursor: zoom-in;
+      transition: transform 0.3s, border-color 0.3s;
     }
-
-    @media (max-width: 768px) {
-      .task-section {
-        flex-direction: column;
-      }
+    .paper-preview:hover, .zoomable:hover {
+      border-color: var(--accent); transform: scale(1.02);
     }
-
-    .resources a {
-      display: inline-block;
-      margin-top: 10px;
-      margin-right: 10px;
+    figcaption {
+      font-size: 0.85rem; color: #555; margin-top: 0.5rem;
     }
-
-    .code-block-container {
-      position: relative;
-      margin-top: 10px;
-    }
+    .resources a { display: inline-block; margin: 0 0.5rem 0.5rem 0; }
+    .resources p { margin-top: 0.5rem; }
+    .code-block-container { position: relative; margin: 1rem 0; }
     .copy-button {
-      position: absolute;
-      top: 8px;
-      right: 8px;
-      background-color: #e0e0e0;
-      border: none;
-      border-radius: 4px;
-      padding: 6px;
-      cursor: pointer;
-      font-size: 14px;
+      position: absolute; top: 0.5rem; right: 0.5rem;
+      background: #e0e0e0; border: none; padding: 0.5rem;
+      border-radius: 4px; cursor: pointer; font-size: 1rem;
     }
+    .copy-button:hover { background: var(--accent); color: #fff; }
     .code-block {
-      background-color: #f4f4f4;
-      border-left: 4px solid #444;
-      padding: 12px;
-      overflow-x: auto;
-      white-space: pre-wrap;
-      font-family: 'Courier New', monospace;
+      background: #f4f4f4; border-left: 4px solid #444;
+      padding: 1rem; overflow-x: auto;
+      font-family: 'Courier New', monospace; white-space: pre;
     }
-
-    .paper-preview {
-      width: 100%;
-      border-radius: 8px;
-      border: 1px solid #ddd;
-      background-color: #fff;
+    footer {
+      margin: 2rem 0 1rem; font-size: 0.85rem;
+      color: #777; text-align: center;
     }
-    .zoomable {
-      width: 100%;
-      border-radius: 8px;
-      border: 1px solid #ddd;
-      cursor: zoom-in;
-      transition: transform 0.3s ease, border-color 0.3s;
+    #theme-toggle {
+      position: fixed; top: 1rem; right: 1rem;
+      width: 40px; height: 40px; border: none;
+      border-radius: 50%; background: #ddd;
+      color: #333; display: flex; align-items: center;
+      justify-content: center; font-size: 1rem;
+      cursor: pointer; z-index: 1001;
     }
-    .zoomable:hover {
-      border-color: #0077cc;
-      transform: scale(1.01);
-    }
-
     .zoom-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: rgba(0, 0, 0, 0.92);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 1000;
-      cursor: zoom-out;
+      position: fixed; top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background: rgba(0,0,0,0.9);
+      display: flex; align-items: center;
+      justify-content: center; z-index: 1000;
     }
     .zoom-overlay img {
-      max-width: 90vw;
-      max-height: 90vh;
-      border-radius: 10px;
-      box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+      max-width: 90vw; max-height: 90vh;
+      border-radius: 10px; box-shadow: 0 0 20px rgba(255,255,255,0.2);
     }
-
-    .dark-mode {
-      background-color: #1d1d1d;
-      color: #f0f0f0;
-    }
-    .dark-mode .container {
-      background-color: #2c2c2c;
-    }
-    .dark-mode h1,
-    .dark-mode h2 {
-      color: #f9f9f9;
-    }
-    .dark-mode a {
-      color: #66b3ff;
-    }
+    .dark-mode { background: #1d1d1d; color: #f0f0f0; }
+    .dark-mode .container { background: #2c2c2c; }
+    .dark-mode h1, .dark-mode h2 { color: #f9f9f9; }
+    .dark-mode a { color: #66b3ff; }
     .dark-mode .code-block {
-      background-color: #2e2e2e;
-      color: #fff;
+      background: #2e2e2e; color: #fff;
       border-left-color: #66b3ff;
     }
-    .dark-mode .copy-button,
-    .dark-mode #theme-toggle {
-      background-color: #444;
-      color: #fff;
-    }
-    /* Ensure paper preview SVG stays visible in dark mode */
-    .dark-mode .paper-preview {
-      background-color: #fff;
-    }
-
-    #theme-toggle {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      width: 44px;
-      height: 44px;
-      border: none;
-      border-radius: 50%;
-      background-color: #ddd;
-      color: #333;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 20px;
-      cursor: pointer;
-    }
-
-    footer {
-      margin-top: 50px;
-      font-size: 0.9em;
-      color: #777;
-      text-align: center;
+    .dark-mode .copy-button, .dark-mode #theme-toggle {
+      background: #444; color: #fff;
     }
   </style>
 </head>
 <body>
-  <button id="theme-toggle" aria-label="Toggle dark/light mode">
-    <i class="fas fa-moon"></i>
-  </button>
-
+  <button id="theme-toggle" aria-label="Toggle theme"><i class="fas fa-moon"></i></button>
   <div class="container">
     <h1>Unobserved Object Detection</h1>
-    <h2>Believing is Seeing: Unobserved Object Detection using Generative Models</h2>
-    <h2>CVPR 2025</h2>
-
-    <p>TLDR: This paper extends traditional object detection—enabling autonomous systems not only to localize visible objects but also to predict object positions in unobserved regions. </p>
+    <h2>Believing is Seeing: Unobserved Object Detection using Generative Models, <strong>CVPR 2025</strong></h2>
+    <p>TLDR: This paper extends object detection—allowing systems to localize visible objects and predict positions of those in unobserved regions.</p>
     <div class="authors">
       <a href="https://1ssb.github.io" target="_blank">Subhransu S. Bhattacharjee</a>
       <a href="https://sites.google.com/view/djcampbell" target="_blank">Dylan Campbell</a>
       <a href="https://rahulsho.me" target="_blank">Rahul Shome</a>
     </div>
-
     <div class="video-wrapper">
       <div class="video-embed">
-        <iframe
-          src="https://www.youtube.com/embed/ke3g0Fus9vI?start=61"
-          title="Project Video"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
-          loading="lazy"
-        ></iframe>
+        <iframe src="https://www.youtube.com/embed/ke3g0Fus9vI?start=61" title="Project Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
       </div>
     </div>
-
     <h2>Abstract</h2>
-    <p>
-      Can objects that are not visible in an image—but are in the vicinity of the
-      camera—be detected? This study introduces the novel tasks of 2D, 2.5D and 3D
-      unobserved object detection for predicting the location of nearby objects
-      that are occluded or lie outside the image frame. We adapt several
-      state-of-the-art pre-trained generative models to address this task,
-      including 2D and 3D diffusion models and vision–language models, and show
-      that they can be used to infer the presence of objects that are not
-      directly observed. To benchmark this task, we propose a suite of metrics
-      that capture different aspects of performance. Our empirical evaluation on
-      indoor scenes from the RealEstate10k and NYU Depth V2 datasets demonstrate
-      results that motivate the use of generative models for the unobserved
-      object detection task.
-    </p>
-
+    <p>Can objects not visible in an image—yet near the camera—be detected? We introduce 2D, 2.5D & 3D unobserved object detection, adapting pretrained generative models (2D/3D diffusion & vision–language) to infer occluded or out-of-frame objects. We benchmark on RealEstate10k & NYU Depth V2 with metrics capturing diverse performance aspects.</p>
     <h2>Task Definition</h2>
     <div class="task-section">
-      <div class="task-image-wrapper">
-        <img
-          id="task-image"
-          src="assets/images/UOD.svg"
-          alt="UOD Example"
-          loading="lazy"
-        />
-      </div>
       <div class="task-text">
-        <p>
-          The task of <strong>unobserved object detection</strong> is to detect
-          objects that are present in the scene but not captured within the
-          camera frustum. In this paper, we address this by predicting a
-          conditional distribution over a bounded spatial region and a set of
-          semantic labels from a single RGB image. We refer to this distribution
-          as a <strong>spatio-semantic distribution</strong>, visualized as a
-          heatmap.
-        </p>
+        <p>The task of <strong>unobserved object detection</strong> is to identify objects present in the scene but outside the camera frustum by predicting a conditional spatio-semantic distribution—a heatmap over spatial regions and labels—from a single RGB image.</p>
+      </div>
+      <div class="task-image-wrapper">
+        <img id="task-image" src="assets/images/UOD.svg" alt="UOD Example" loading="lazy" />
       </div>
     </div>
-
     <h2>Paper</h2>
     <figure>
       <a href="https://arxiv.org/abs/2410.05869" target="_blank">
-        <img
-          src="assets/images/first.svg"
-          alt="First Page of the Paper"
-          class="paper-preview"
-          loading="lazy"
-        />
+        <img src="assets/images/first.svg" alt="First Page" class="paper-preview" loading="lazy" />
       </a>
-      <figcaption>Click image to open the full paper on arXiv.</figcaption>
+      <figcaption>Click to view full paper on arXiv.</figcaption>
     </figure>
-
     <h2>Code</h2>
     <div class="resources">
       <a href="https://github.com/1ssb/UOD" target="_blank">
-        <img
-          src="https://img.shields.io/badge/View%20on%20GitHub-UOD-blue?style=for-the-badge&logo=github"
-          alt="View on GitHub"
-        />
+        <img src="https://img.shields.io/badge/GitHub-UOD-blue?style=for-the-badge&logo=github" alt="GitHub" />
       </a>
-      <p style="margin-top: 10px;">
-        Codebase is being released in stages. Metrics implementation now available.
-      </p>
+      <p>Metrics implementation available; full code releasing soon.</p>
     </div>
-
     <h2>Results</h2>
     <figure>
-      <img
-        id="results-image"
-        src="assets/images/results.png"
-        alt="Detection Results"
-        class="zoomable"
-        loading="lazy"
-      />
-      <figcaption>
-        <strong>Figure:</strong> Each row shows spatial predictions by different
-        models across object types (TV, fridge, sink, laptop). The white star
-        represents ground truth. Warmer heatmap indicates higher object
-        likelihood.
-      </figcaption>
+      <img id="results-image" src="assets/images/results.png" alt="Detection Results" class="zoomable" loading="lazy" />
+      <figcaption><strong>Figure:</strong> Spatial prediction heatmaps by model across object types (TV, fridge, sink, laptop). White star=ground truth; warmer colors=higher likelihood.</figcaption>
     </figure>
-
     <h2>Poster</h2>
     <figure>
-      <img
-        id="poster-image"
-        src="assets/images/Final.png"
-        alt="Project Poster"
-        class="zoomable"
-        loading="lazy"
-      />
-      <figcaption>Click to zoom the full poster.</figcaption>
+      <img id="poster-image" src="assets/images/Final.png" alt="Project Poster" class="zoomable" loading="lazy" />
+      <figcaption>Click to zoom poster.</figcaption>
     </figure>
-
     <h2>Acknowledgments</h2>
     <p>
       Subhransu is supported by the University Research Scholarship at the
@@ -383,55 +189,40 @@
       implied, of the U.S. Government. This research was also funded by the
       Australian Research Council under the scheme ITRH IH210100030.
     </p>
-
     <h2>Cite As</h2>
     <div class="code-block-container">
-      <button id="copy-btn" class="copy-button" title="Copy citation">
-        <i class="fas fa-copy"></i>
-      </button>
+      <button id="copy-btn" class="copy-button" title="Copy citation"><i class="fas fa-copy"></i></button>
       <div class="code-block">
-<pre id="citation-code">@inproceedings{bhattacharjee2025uod,
+@inproceedings{bhattacharjee2025uod,
   title={{Believing is Seeing}: Unobserved Object Detection using Generative Models},
   author={Bhattacharjee, Subhransu S. and Campbell, Dylan and Shome, Rahul},
-  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
-  year={2025}
-}</pre>
+  booktitle={CVPR}, year={2025}
       </div>
     </div>
-
     <footer>
-      Contact: Corresponding Author —
-      <a href="mailto:Subhransu.Bhattacharjee@anu.edu.au">Subhransu.Bhattacharjee@anu.edu.au</a>
+      Corresponding author: <a href="mailto:Subhransu.Bhattacharjee@anu.edu.au">Subhransu.Bhattacharjee@anu.edu.au</a>
     </footer>
   </div>
-
   <script>
-    // Toggle dark/light mode
+    // Theme toggle
     const themeToggle = document.getElementById('theme-toggle');
     themeToggle.addEventListener('click', () => {
       document.body.classList.toggle('dark-mode');
-      const icon = themeToggle.querySelector('i');
-      icon.classList.toggle('fa-moon');
-      icon.classList.toggle('fa-sun');
+      themeToggle.innerHTML = document.body.classList.contains('dark-mode') ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
     });
-
-    // Copy citation text
-    const copyBtn = document.getElementById('copy-btn');
-    copyBtn.addEventListener('click', () => {
-      const citation = document.getElementById('citation-code').innerText;
-      navigator.clipboard.writeText(citation).then(() => {
-        copyBtn.innerHTML = '<i class="fas fa-check"></i>';
-        setTimeout(() => (copyBtn.innerHTML = '<i class="fas fa-copy"></i>'), 2000);
-      });
+    // Copy citation
+    document.getElementById('copy-btn').addEventListener('click', ()=>{
+      const code = document.querySelector('.code-block').innerText;
+      navigator.clipboard.writeText(code);
+      const btn = event.currentTarget; btn.innerHTML='<i class="fas fa-check"></i>';
+      setTimeout(()=>btn.innerHTML='<i class="fas fa-copy"></i>',2000);
     });
-
-    // Zoom functionality for any element with class "zoomable" or task image
-    document.querySelectorAll('.zoomable, .task-image-wrapper img').forEach((img) => {
-      img.addEventListener('click', () => {
-        const overlay = document.createElement('div');
-        overlay.className = 'zoom-overlay';
-        overlay.innerHTML = `<img src="${img.src}" alt="${img.alt}" />`;
-        overlay.addEventListener('click', () => document.body.removeChild(overlay));
+    // Zoom images
+    document.querySelectorAll('.zoomable, #task-image').forEach(img=>{
+      img.addEventListener('click',()=>{
+        const overlay=document.createElement('div'); overlay.className='zoom-overlay';
+        overlay.innerHTML=`<img src='${img.src}' alt='${img.alt}'>`;
+        overlay.addEventListener('click',()=>overlay.remove());
         document.body.appendChild(overlay);
       });
     });
