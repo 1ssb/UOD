@@ -284,6 +284,28 @@
             text-decoration: underline;
         }
 
+        .zoom-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            cursor: zoom-out;
+        }
+
+        .zoom-overlay img {
+            max-width: 90vw;
+            max-height: 90vh;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+            object-fit: contain;
+        }
+
         @supports (padding: max(0px)) {
             body {
                 padding-left: max(var(--spacing-unit), env(safe-area-inset-left));
@@ -406,7 +428,11 @@
         </figure>
         <h2>Acknowledgments</h2>
         <p>
-Subhransu is supported by the international University Research Scholarship at the Australian National University. This research was partially funded by the U.S. Government under DARPA TIAMAT HR00112490421. The views and conclusions expressed in this document are solely those of the authors and do not represent the official policies or endorsements, either expressed or implied, of the U.S. Government. This research was also funded by the Australian Research Council under the scheme ITRH IH210100030.
+            Subhransu is supported by the international University Research Scholarship at the Australian National
+            University. This research was partially funded by the U.S. Government under DARPA TIAMAT HR00112490421. The
+            views and conclusions expressed in this document are solely those of the authors and do not represent the
+            official policies or endorsements, either expressed or implied, of the U.S. Government. This research was
+            also funded by the Australian Research Council under the scheme ITRH IH210100030.
         </p>
         <h2>Cite As</h2>
         <div class="code-block-container">
@@ -416,7 +442,8 @@ Subhransu is supported by the international University Research Scholarship at t
 title={{Believing is Seeing}: Unobserved Object Detection using Generative Models},
 author={Bhattacharjee, Subhransu S. and Campbell, Dylan and Shome, Rahul},
 booktitle={Proceedings of Computer Vision and Pattern Recognition (CVPR)},
-year={2025}}
+year={2025}
+}
             </div>
         </div>
         <footer>
