@@ -284,97 +284,6 @@
             text-decoration: underline;
         }
 
-        #theme-toggle {
-            position: fixed;
-            top: 1rem;
-            right: 1rem;
-            width: 40px;
-            height: 40px;
-            border: none;
-            border-radius: 50%;
-            background: #ddd;
-            color: #333;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1rem;
-            cursor: pointer;
-            z-index: 1001;
-        }
-
-        .zoom-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: rgba(0, 0, 0, 0.9);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 1000;
-            cursor: zoom-out;
-        }
-
-        .zoom-overlay img {
-            max-width: 90vw;
-            max-height: 90vh;
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
-            object-fit: contain;
-        }
-
-        .dark-mode {
-            --bg: #1a1a1a;
-            --text: #e0e0e0;
-            --container-bg: #2d2d2d;
-            --primary: #4d9fff;
-            --accent: #66b3ff;
-            --border: #404040;
-            --shadow: rgba(0, 0, 0, 0.2);
-            --caption-color: #d0d0d0;
-            --tldr-bg: #1a2a3a;
-            --tldr-border: #2a3a4a;
-        }
-
-        .dark-mode h1 {
-            color: #ffffff;
-        }
-
-        .dark-mode .code-block {
-            background: #1e1e1e;
-            color: #e0e0e0;
-            border-left-color: var(--accent);
-        }
-
-        .dark-mode figcaption {
-            color: var(--caption-color);
-            opacity: 1;
-        }
-
-        .dark-mode .copy-button,
-        .dark-mode #theme-toggle {
-            background: #404040;
-            color: #ffffff;
-        }
-
-        .dark-mode .copy-button:hover,
-        .dark-mode #theme-toggle:hover {
-            background: var(--accent);
-        }
-
-        .dark-mode .tldr-section::before {
-            color: var(--accent);
-        }
-
-        .dark-mode footer a {
-            color: #ffffff;
-        }
-
-        .dark-mode footer a:hover {
-            color: var(--accent);
-        }
-
         @supports (padding: max(0px)) {
             body {
                 padding-left: max(var(--spacing-unit), env(safe-area-inset-left));
@@ -433,7 +342,6 @@
 </head>
 
 <body>
-    <button id="theme-toggle" aria-label="Toggle theme"><i class="fas fa-moon"></i></button>
     <div class="container">
         <h1>Unobserved Object Detection</h1>
         <h2>Believing is Seeing: Unobserved Object Detection using Generative Models</h2>
@@ -517,12 +425,6 @@ year={2025}}
         </footer>
     </div>
     <script>
-        // Theme toggle
-        const themeToggle = document.getElementById('theme-toggle');
-        themeToggle.addEventListener('click', () => {
-            document.body.classList.toggle('dark-mode');
-            themeToggle.innerHTML = document.body.classList.contains('dark-mode') ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
-        });
         // Copy citation
         document.getElementById('copy-btn').addEventListener('click', () => {
             const code = document.querySelector('.code-block').innerText;
